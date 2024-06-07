@@ -15,6 +15,10 @@ if (localStorage.getItem('matches')){
     document.querySelector('.js-score').innerHTML = `Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}`;
   }
   displayScore();
+
+  function displayResult(res){
+    document.querySelector('.js-result').innerHTML = res;
+  }
   
   function cmove(){
     const randomNum = Math.random();
@@ -35,55 +39,57 @@ if (localStorage.getItem('matches')){
     matches.tie = 0;
     matches.loses = 0;
     displayScore();
+    document.querySelector('.js-moves').innerHTML = "";
+    document.querySelector('.js-result').innerHTML = "";
     localStorage.removeItem('matches');
   }
   
   function winner(user){
-    
     const computerMove = cmove();
+    document.querySelector('.js-moves').innerHTML = `Your Move ${user}. Computer Move ${computerMove}`;
     switch(user){
       case 'rock':
         if(computerMove === 'rock'){
             matches.tie += 1;
-          
+            displayResult('Tie.');
           break;
         }else if(computerMove === 'paper'){
             matches.loses +=1;
-            
+            displayResult('You Lose.');
           break;
         }else{
             matches.wins +=1;
-            
+            displayResult('You Win.');
           break;
         }
       
       case 'paper':
         if(computerMove === 'rock'){
             matches.wins+=1;
-            
+            displayResult('You Win.');
           break;
         }else if(computerMove === 'paper'){
             matches.tie+=1;
-            
+            displayResult('Tie.');
           break;
         }else{
             matches.loses+=1;
-            
+            displayResult('You Lose.');
           break;
         }
         
       case 'scissors':
         if(computerMove === 'rock'){
             matches.loses+=1;
-            
+            displayResult('You Lose.');
           break;
         }else if(computerMove === 'paper'){
             matches.wins+=1;
-            
+            displayResult('You Win.');
           break;
         }else{
             matches.tie+=1;
-            
+            displayResult('Tie.');
           break;
         }
     }
