@@ -11,7 +11,10 @@ if (localStorage.getItem('matches')){
     }
 }
 
-
+  function displayScore(){
+    document.querySelector('.js-score').innerHTML = `Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}`;
+  }
+  displayScore();
   
   function cmove(){
     const randomNum = Math.random();
@@ -31,56 +34,40 @@ if (localStorage.getItem('matches')){
     matches.wins = 0;
     matches.tie = 0;
     matches.loses = 0;
+    displayScore();
     localStorage.removeItem('matches');
   }
   
   function winner(user){
+    
     const computerMove = cmove();
     switch(user){
       case 'rock':
         if(computerMove === 'rock'){
             matches.tie += 1;
-          alert(`You Picked ${user}. Computer Picked ${computerMove}, so its a Tie
-            Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-            `);
           
           break;
         }else if(computerMove === 'paper'){
             matches.loses +=1;
-            alert(`You Picked ${user}. Computer Picked ${computerMove}, You Lost
-                Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-                `);
-          
+            
           break;
         }else{
             matches.wins +=1;
-            alert(`You Picked ${user}. Computer Picked ${computerMove}, You Won
-                Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-                `);
-          
+            
           break;
         }
       
       case 'paper':
         if(computerMove === 'rock'){
             matches.wins+=1;
-            alert(`You Picked ${user}. Computer Picked ${computerMove}, You Won
-                Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-                `);
             
           break;
         }else if(computerMove === 'paper'){
             matches.tie+=1;
-            alert(`You Picked ${user}. Computer Picked ${computerMove}, so its a Tie
-                Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-                `);
             
           break;
         }else{
             matches.loses+=1;
-            alert(`You Picked ${user}. Computer Picked ${computerMove}, You Lost
-                Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-                `);
             
           break;
         }
@@ -88,27 +75,19 @@ if (localStorage.getItem('matches')){
       case 'scissors':
         if(computerMove === 'rock'){
             matches.loses+=1;
-            alert(`You Picked ${user}. Computer Picked ${computerMove}, You Lost
-                Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-                `);
             
           break;
         }else if(computerMove === 'paper'){
             matches.wins+=1;
-            alert(`You Picked ${user}. Computer Picked ${computerMove}, You Won
-                Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-                `);
             
           break;
         }else{
             matches.tie+=1;
-            alert(`You Picked ${user}. Computer Picked ${computerMove}, so its a Tie
-                Your Overall Score is--> Wins: ${matches.wins}, Loses: ${matches.loses}, Ties: ${matches.tie}
-                `);
             
           break;
         }
     }
     localStorage.setItem('matches',JSON.stringify(matches));
+    displayScore();  
   }
   
