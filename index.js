@@ -41,6 +41,7 @@ if (localStorage.getItem('matches')){
     displayScore();
     document.querySelector('.user-move').innerHTML = ``;
     document.querySelector('.com-move').innerHTML =  ``;
+    document.querySelector('.js-result').innerHTML = "";
     localStorage.removeItem('matches');
   }
   
