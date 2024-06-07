@@ -1,8 +1,17 @@
-const matches = {
-    wins:0,
-    loses:0,
-    tie:0
-  }
+let matches = {};
+
+if (localStorage.getItem('matches')){
+    matches = JSON.parse(localStorage.getItem('matches'))
+    
+}else{
+    matches = {
+        wins:0,
+        loses:0,
+        tie:0
+    }
+}
+
+
   
   function cmove(){
     const randomNum = Math.random();
@@ -22,6 +31,7 @@ const matches = {
     matches.wins = 0;
     matches.tie = 0;
     matches.loses = 0;
+    localStorage.removeItem('matches');
   }
   
   function winner(user){
@@ -99,5 +109,6 @@ const matches = {
           break;
         }
     }
+    localStorage.setItem('matches',JSON.stringify(matches));
   }
   
