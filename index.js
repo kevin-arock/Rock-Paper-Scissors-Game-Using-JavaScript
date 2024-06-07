@@ -24,11 +24,11 @@ if (localStorage.getItem('matches')){
     const randomNum = Math.random();
     let computerMove = '';
     if(randomNum >= 0 && randomNum < 1/3){
-      computerMove = 'rock';
+      computerMove = '✊';
     }else if(randomNum >= 1/3 && randomNum < 2/3){
-      computerMove = 'paper';
+      computerMove = '🖐️';
     }else if(randomNum >= 2/3 && randomNum < 1){
-      computerMove = 'scissors';
+      computerMove = '✌️';
     }
     
     return computerMove;
@@ -39,21 +39,28 @@ if (localStorage.getItem('matches')){
     matches.tie = 0;
     matches.loses = 0;
     displayScore();
-    document.querySelector('.js-moves').innerHTML = "";
-    document.querySelector('.js-result').innerHTML = "";
+    document.querySelector('.user-move').innerHTML = ``;
+    document.querySelector('.com-move').innerHTML =  ``;
     localStorage.removeItem('matches');
   }
   
   function winner(user){
     const computerMove = cmove();
-    document.querySelector('.js-moves').innerHTML = `Your Move ${user}. Computer Move ${computerMove}`;
+    document.querySelector('.user-move').innerHTML = `
+        <h2 class="u">${user}</h2>
+        <h4>You</h4>
+    `;
+    document.querySelector('.com-move').innerHTML = `
+        <h2 class="u">${computerMove}</h2>
+        <h4>Computer</h4>
+    `;
     switch(user){
-      case 'rock':
-        if(computerMove === 'rock'){
+      case '✊':
+        if(computerMove === '✊'){
             matches.tie += 1;
             displayResult('Tie.');
           break;
-        }else if(computerMove === 'paper'){
+        }else if(computerMove === '🖐️'){
             matches.loses +=1;
             displayResult('You Lose.');
           break;
@@ -63,12 +70,12 @@ if (localStorage.getItem('matches')){
           break;
         }
       
-      case 'paper':
-        if(computerMove === 'rock'){
+      case '🖐️':
+        if(computerMove === '✊'){
             matches.wins+=1;
             displayResult('You Win.');
           break;
-        }else if(computerMove === 'paper'){
+        }else if(computerMove === '🖐️'){
             matches.tie+=1;
             displayResult('Tie.');
           break;
@@ -78,12 +85,12 @@ if (localStorage.getItem('matches')){
           break;
         }
         
-      case 'scissors':
-        if(computerMove === 'rock'){
+      case '✌️':
+        if(computerMove === '✊'){
             matches.loses+=1;
             displayResult('You Lose.');
           break;
-        }else if(computerMove === 'paper'){
+        }else if(computerMove === '🖐️'){
             matches.wins+=1;
             displayResult('You Win.');
           break;

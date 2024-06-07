@@ -7,15 +7,24 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <h1>Let's Play!</h1>
-  <button onclick="winner('rock')">rock</button>
-  <button onclick="winner('paper')">paper</button>
-  <button onclick="winner('scissors')">scissors</button>
-  <p class="js-result"></p>
-  <p class="js-moves"></p>
-  <p>Your Score</p>
-  <p class="js-score"></p>
-  <button onclick="reset()">reset score</button>
+  <div class="container">
+    <h1>Let's Play!</h1>
+    <button onclick="winner('✊')" class="btn"><h1>✊</h1></button>
+    <button onclick="winner('🖐️')" class="btn"><h1>🖐️</h1></button>
+    <button onclick="winner('✌️')" class="btn"><h1>✌️</h1></button>
+    <p class="js-result"></p>
+    <div class="moves">
+      <div class="user-move">
+        
+      </div>
+      <div class="com-move">
+        
+      </div>
+    </div>
+    <p>Your Score</p>
+    <p class="js-score"></p>
+    <button onclick="reset()" class="reset-btn">Reset</button>
+  </div>
   <script src="index.js"></script>
 </body>
 </html>
