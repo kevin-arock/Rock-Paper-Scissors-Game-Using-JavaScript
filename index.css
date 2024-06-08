@@ -28,12 +28,30 @@ body{
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 5px;
-    box-shadow: 0px 22px 24px rgba(255, 255, 0, 0.288);
+    box-shadow: 0px 22px 20px rgba(255, 255, 0, 0.288);
 }
 
 .reset-btn:hover{
     border-color: rgb(255, 255, 0);
 }
+
+.auto-btn{
+    background-color: rgba(255, 255, 0, 0.83);
+    font-weight: bold;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+    box-shadow: 0px 22px 20px rgba(255, 255, 0, 0.288);
+}
+
+.auto-btn:hover{
+    border-color: rgb(255, 255, 0);
+}
+
+
 
 .btn{
     background-color: transparent;

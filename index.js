@@ -20,6 +20,24 @@ if (localStorage.getItem('matches')){
     document.querySelector('.js-result').innerHTML = res;
   }
   
+  let id;
+  let isPlaying = false;
+  function autoPlay(){
+    if(!isPlaying){
+      document.querySelector('.auto-btn').innerText = 'Stop';
+      id = setInterval(()=>{
+        let userMove = cmove();
+         winner(userMove);
+      },1000);
+      isPlaying= true;
+    }else{
+      clearInterval(id);
+      document.querySelector('.auto-btn').innerText = 'Auto Play';
+      isPlaying = false;
+    }
+    
+  }
+
   function cmove(){
     const randomNum = Math.random();
     let computerMove = '';
